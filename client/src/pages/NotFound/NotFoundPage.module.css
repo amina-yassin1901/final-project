@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 80vh;
+  padding: 40px 20px;
+}
+
+.content {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.imageWrapper {
+  flex: 0 0 auto;
+  max-width: 480px;
+}
+
+.image {
+  width: 301px;
+  height: 460px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.textWrapper {
+  flex: 1;
+  max-width: 480px;
+  margin-top: 50px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 20px 0;
+  color: #000000;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.description p {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #737373;
+  margin: 0;
+  font-weight: 400;
+}

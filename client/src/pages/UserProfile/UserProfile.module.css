@@ -1,0 +1,158 @@
+.page {
+  width: 100%;
+  max-width: 940px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 30px;
+  padding-bottom: 42px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #efefef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  min-width: 0;
+}
+
+.top {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.followButton,
+.followingButton {
+  min-width: 105px;
+  height: 34px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.followButton {
+  background-color: #0095f6;
+  color: #fff;
+}
+
+.followButton:hover {
+  background-color: #1877f2;
+}
+
+.followingButton {
+  background-color: #efefef;
+  color: #262626;
+}
+
+.followingButton:hover {
+  background-color: #dbdbdb;
+}
+
+.followButton:disabled,
+.followingButton:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.fullName {
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.bio {
+  margin: 7px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.website {
+  display: inline-block;
+  margin-top: 7px;
+  color: #00376b;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.actionError {
+  margin: 16px 0;
+  color: #ed4956;
+  font-size: 14px;
+  text-align: center;
+}
+
+.message {
+  margin-top: 120px;
+  text-align: center;
+}
+
+.notFound {
+  margin-top: 120px;
+  text-align: center;
+}
+
+.notFound h1 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.notFound p {
+  margin: 0 0 22px;
+  color: #737373;
+}
+
+.notFound button {
+  min-height: 38px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #0095f6;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}

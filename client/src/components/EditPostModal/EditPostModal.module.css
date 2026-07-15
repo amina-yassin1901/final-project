@@ -1,0 +1,117 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+.modal {
+  width: 860px;
+  max-width: 92vw;
+  height: 580px;
+  max-height: 90vh;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.header {
+  height: 48px;
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  align-items: center;
+  padding: 0 14px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+.cancelButton,
+.saveButton {
+  border: none;
+  background: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.cancelButton {
+  justify-self: start;
+  color: #262626;
+}
+
+.saveButton {
+  justify-self: end;
+  color: #0095f6;
+  font-weight: 600;
+}
+
+.cancelButton:disabled,
+.saveButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.content {
+  height: calc(100% - 48px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+
+.imageBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-right: 1px solid #dbdbdb;
+  background-color: #fafafa;
+  cursor: pointer;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #000;
+}
+
+.fileInput {
+  display: none;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 0;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.counter {
+  margin-top: 8px;
+  color: #a8a8a8;
+  font-size: 12px;
+  text-align: right;
+}
+
+.error {
+  margin-top: 16px;
+  color: #ed4956;
+  font-size: 13px;
+}
