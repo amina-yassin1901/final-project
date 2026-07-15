@@ -1,5 +1,6 @@
 import Follow from "../models/Follow.js";
 import User from "../models/User.js";
+import Notification from "../models/Notification.js";
 
 export const followUser = async (req, res) => {
   try {
@@ -36,7 +37,13 @@ export const followUser = async (req, res) => {
     });
 
     await follow.save();
+    const notification = new Notification({
+      recipient: userId,
+      sender: req.user._id,
+      type: "follow",
+    });
 
+    await notification.save();
     res.status(201).json({
       message: "Successfully followed user",
     });
@@ -65,6 +72,70 @@ export const unfollowUser = async (req, res) => {
 
     res.status(200).json({
       message: "Successfully unfollowed user",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+export const getFollowers = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const followers = await Follow.find({ following: userId }).populate(
+      "follower",
+      "username fullName profilePic",
+    );
+
+    res.status(200).json({
+      followersCount: followers.length,
+      followers,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+export const getFollowing = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const following = await Follow.find({ follower: userId }).populate(
+      "following",
+      "username fullName profilePic",
+    );
+
+    res.status(200).json({
+      followingCount: following.length,
+      following,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+export const getFollowStatus = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    const follow = await Follow.findOne({
+      follower: req.user._id,
+      following: userId,
+    });
+
+    res.status(200).json({
+      isFollowing: Boolean(follow),
     });
   } catch (error) {
     res.status(500).json({

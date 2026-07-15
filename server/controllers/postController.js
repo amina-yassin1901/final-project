@@ -76,8 +76,8 @@ export const updatePost = async (req, res) => {
 
     const { caption } = req.body;
 
-    if (caption) {
-      post.caption = caption;
+    if (caption !== undefined) {
+      post.caption = caption.trim();
     }
 
     if (req.file) {
@@ -87,6 +87,8 @@ export const updatePost = async (req, res) => {
     }
 
     const updatedPost = await post.save();
+
+    await updatedPost.populate("user", "username fullName profilePic");
 
     res.status(200).json(updatedPost);
   } catch (error) {
@@ -136,6 +138,21 @@ export const getExplorePosts = async (req, res) => {
       path: "user",
       select: "username fullName profilePic",
     });
+
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+export const getUserPosts = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const posts = await Post.find({ user: userId })
+      .populate("user", "username fullName profilePic")
+      .sort({ createdAt: -1 });
 
     res.status(200).json(posts);
   } catch (error) {

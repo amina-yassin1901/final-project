@@ -82,15 +82,14 @@ export const login = async (req, res) => {
       },
     );
 
+    const userWithoutPassword = await User.findById(user._id).select(
+      "-password",
+    );
+
     res.status(200).json({
       message: "Login successful",
       token,
-      user: {
-        id: user._id,
-        username: user.username,
-        fullName: user.fullName,
-        email: user.email,
-      },
+      user: userWithoutPassword,
     });
   } catch (error) {
     console.error(error);
@@ -114,5 +113,7 @@ export const logout = async (req, res) => {
 };
 
 export const getProfile = async (req, res) => {
-  res.status(200).json(req.user);
+  res.status(200).json({
+    user: req.user,
+  });
 };
